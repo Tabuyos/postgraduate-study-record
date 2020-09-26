@@ -1,0 +1,27 @@
+\documentclass[UTF8,fontset=ubuntu]{ctexart}
+% 使用 tbtags 将序号置于行尾右端
+\usepackage[leqno,tbtags]{amsmath}
+\usepackage{amssymb}
+
+\newenvironment{shrinkeq}[1]
+{\bgroup
+  \addtolength\abovedisplayshortskip{#1}
+  \addtolength\abovedisplayskip{#1}
+  \addtolength\belowdisplayshortskip{#1}
+  \addtolength\belowdisplayskip{#1}}
+{\egroup\ignorespacesafterend}
+
+\begin{document}
+
+% 生成作者信息
+\title{\textit {高等数学}}
+\author{Aaron Liew(Tabuyos)}
+\maketitle
+
+\include{contents/chapter-1}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

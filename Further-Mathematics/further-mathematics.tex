@@ -1,8 +1,5 @@
 \documentclass[a4paper,zihao=-4,UTF8]{ctexbook}
-% \documentclass[a4paper,UTF8]{article}
 \usepackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
-\usepackage{booktabs,bigstrut,multirow}
-\usepackage{enumitem}
 \usepackage[warnings-off={mathtools-colon}]{unicode-math}
 \usepackage{caption,subcaption}
 \captionsetup{font=small,skip=6pt,textfont=it}
@@ -24,34 +21,9 @@
 \newpage
 \pagenumbering{arabic}
 % 只能放在正文, 并且会另起一页
-% \include{contents/chapter-1}
+\include{contents/chapter-1}
 % 可以放在正文和导言区, 并且不会另起一页
 % \input{contents/chapter-1}
-\chapter{Title}
-\begin{equation}
-  \label{eq:1}
-  a+b=1
-\end{equation}
-\begin{table}[htbp]
-  \centering
-  \caption{不同激励对应的特解}
-  \small
-  \begin{tabular}{ccc}
-    \toprule
-    激励 $f(x)$   & \multicolumn{2}{c}{特解 $y_p(x)$}  \\
-    \midrule
-    \multirow{2}*{\mbox{$x^m$}} &  $P_mx^m+P_{m-1}x^{m-1}+\cdots+P_1x+P_0$   & 所有特征根不相等\\
-                  &  $x^r\left(P_mx^m+P_{m-1}x^{m-1}+\cdots+P_1x+P_0\right)$              & 有$r$重相等特征根\\
-    \midrule
-    \multirow{3}*{$e^{\alpha x}$} & $Pe^{\alpha x}$                     & $\alpha$  不等于特征根\\
-                  & $(P_1x+P_0)e^{\alpha x}$                                    & $\alpha$等于特征单根 \\
-                  & $P_rx^r+P_{r_1}x^{r_1}+\cdots+P_1x+P_0$                     & $\alpha$等于$r$重特征单根 \\
-    \midrule
-    $\cos(\beta x)$或$\sin(\beta x)$ & $ P\cos\beta x+Q\sin \beta x$   & 所有特征根不相等 \\
-    \bottomrule
-  \end{tabular}%
-  % \label{tab:addlabel}%
-\end{table}%
 \end{document}
 
 %%% Local Variables:

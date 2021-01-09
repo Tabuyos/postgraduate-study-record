@@ -1,0 +1,654 @@
+% This file is a .sty document of the package--teaching-design, created by Yongxue Liu, Jan 5, 2021. E-mail: yongxuel487@foxmail.com.
+% http://www.latexstudio.net.
+% ==============================================
+% 加载宏包
+% **********************************************
+\usepackage{newtxtext,newtxmath}
+  \DeclareSymbolFont{CMlargesymbols}{OMX}{cmex}{m}{n}
+  \let\sumop\relax\let\prodop\relax
+  \DeclareMathSymbol{\sumop}{\mathop}{CMlargesymbols}{"50}
+  \DeclareMathSymbol{\prodop}{\mathop}{CMlargesymbols}{"51}
+\usepackage{amsmath}
+\allowdisplaybreaks
+\usepackage{mathdots}
+\usepackage{extarrows}
+\usepackage{array,arydshln}
+\newcommand\xline{\mathord{
+  \begin{tikzpicture}[baseline = (a.base)]
+      \node [inner sep=0pt] (a) {\phantom{N}};
+      \draw[dash pattern = on 1pt off 1pt](a.south)--(a.north);
+  \end{tikzpicture}
+  }
+}
+
+% 定义选择题
+% **********************************************
+\def\CA{A}
+\def\CB{B}
+\def\CC{C}
+\def\CD{D}
+
+\newcommand{\kh}{(\rule[-2pt]{0.6cm}{0pt})}
+\usepackage{ifthen}
+\newlength{\la}
+\newlength{\lb}
+\newlength{\lc}
+\newlength{\ld}
+\newlength{\lhalf}
+\newlength{\lquarter}
+\newlength{\lmax}
+\newcommand{\xx}[4]{\hfill\kh\\[.5pt]%
+\settowidth{\la}{\CA.#1~~~}
+\settowidth{\lb}{\CB.#2~~~}
+\settowidth{\lc}{\CC.#3~~~}
+\settowidth{\ld}{\CD.#4~~~}
+\ifthenelse{\lengthtest{\la>\lb}}{\setlength{\lmax}{\la}}{\setlength{\lmax}{\lb}}
+\ifthenelse{\lengthtest{\lc>\lmax}}{\setlength{\lmax}{\lc}}{}
+\ifthenelse{\lengthtest{\ld>\lmax}}{\setlength{\lmax}{\ld}}{}
+\setlength{\lhalf}{\dimexpr 0.5\linewidth-\parindent/2}
+\setlength{\lquarter}{\dimexpr 0.25\linewidth-\parindent/4}
+\ifthenelse{\lengthtest{\lmax>\lhalf}}{\indent \CA.#1 \\\indent \CB.#2 \\\indent \CC.#3 \\\indent \CD.#4}{
+\ifthenelse{\lengthtest{\lmax>\lquarter}}{\hspace*{2em}\makebox[\lhalf][l]{\CA.#1~~~}%
+\makebox[\lhalf][l]{\CB.#2~~~}\\
+
+\indent\makebox[\lhalf][l]{\CC.#3~~~}%
+\makebox[\lhalf][l]{\CD.#4~~~}}%
+{\hspace*{2em}\makebox[\lquarter][l]{\CA.#1~~~}%
+\makebox[\lquarter][l]{\CB.#2~~~}%
+\makebox[\lquarter][l]{\CC.#3~~~}%
+\makebox[\lquarter][l]{\CD.#4~~~}}}}
+
+% 字体设置
+% **********************************************
+\setCJKmainfont[BoldFont={方正黑体_GBK},ItalicFont={方正楷体_GBK},Mapping=fullwidth-stop]{方正书宋_GBK}
+
+\defaultfontfeatures{Mapping=tex-text}
+\XeTeXlinebreaklocale ”zh”
+\XeTeXlinebreakskip = 0pt plus 1pt
+%\setmainfont{Times New Roman}
+%-----------------------------------------------
+
+\usepackage[perpage]{footmisc}
+\usepackage[colorlinks=true,linkcolor=blue!75!green,linktoc=all,pdfauthor={向禹}]{hyperref}
+
+
+% 定义一些常用数学字母
+% **********************************************
+\let\bd\boldsymbol
+\def\ft#1{\fcolorbox{cyan}{white}{\text{#1}}}
+\def\VA{\bd A}
+\def\VB{\bd B}
+\def\VC{\bd C}
+\def\VD{\bd D}
+\def\VE{\bd E}
+\def\VO{\bd O}
+\def\VQ{\bd Q}
+\def\VP{\bd P}
+\def\ba{\bd \alpha}
+\def\bb{\bd \beta}
+\def\bg{\bd \gamma}
+\def\vx{\bd x}
+\def\vy{\bd y}
+\def\TT{^{\mathrm T}}
+
+\def\ba{\bd \alpha}
+\def\jian#1{{\color{cyan}#1}}
+\let\le\leqslant
+\let\ge\geqslant
+\usepackage[Symbol]{upgreek}
+\renewcommand{\pi}{\uppi}%%%直立pi
+\newcommand\kong[1][2]{\underline{\hspace{#1 cm}}}
+\newcommand\bline{\textcolor{cyan}{\,\rule[0.5ex]{3mm}{0.6pt}}\,}
+% ++++++++++++++++++++++++++++++++++++++++++++++
+% **********************************************
+
+\usepackage{pgfornament-han}
+
+% 章节设置
+% **********************************************
+\usepackage[many]{tcolorbox}
+\usetikzlibrary{shapes.symbols,shapes.geometric}
+\usetikzlibrary{calc,backgrounds}
+\def \mybox#1{
+    \begin{tikzpicture}[baseline=(a.base)]
+          \node[inner ysep=0pt, inner xsep=2pt, cloud ,draw=pink, aspect=4, cloud puffs=40,
+           fill=cor1!60]  (a) {#1};
+    \end{tikzpicture}
+  }
+
+\robustify{\mybox}
+
+% 设置习题及解析样式
+% **********************************************
+\newcommand\exercise{\begin{center}\mybox{习题}\end{center}}
+\newcommand\answer{\begin{flushleft}
+                     \mybox{解析}
+                    \end{flushleft}}
+
+\newcommand*\circled[2][circle]{\tikz[baseline=(char.base)]{
+            \node[draw,inner sep=0.1pt,minimum height=1em,#1] (char) {#2};}}
+\newcommand*\scircled[2][circle]{\tikz[baseline=(char.base)]{
+            \node[draw,inner sep=0.1pt,minimum size=0.5em,#1] (char) {$\scriptstyle #2$};}}
+
+\newcommand*\Circled[1]{\tikz[baseline=(char.base)]{
+            \node[draw,inner ysep=2pt,inner xsep=6pt, fill=cor1!40,rounded corners] (char) {#1};}}
+
+\def\mytitle#1{
+\begin{tikzpicture}[baseline=(a.base),remember picture]
+   \node(a){\color{white}#1};
+   \fill[rounded corners,colFrame] (a.north west)--(a.north east)--(a.south east)[sharp corners]--(a.south west)[bend right=40]to (a.north west)--cycle;
+   \draw[rounded corners,Titlebline,very thick] (a.north west)--(a.north east)--(a.south east)--(a.south west);
+   \draw[rounded corners,color=colFrame,very thick](a.south west)--($(a.south west)+(156mm,0mm)$);
+   \node(a){\color{white}#1\vspace{-22mm}};
+ \end{tikzpicture}
+}
+
+% 编号过度定制
+% **********************************************
+\def\myshift#1{
+\ifcase\value{#1}
+0mm \or0.76mm \or0.05mm \or-0.05mm \or0.05mm \or0mm \or0mm \or-0.05mm
+\fi}
+\def\shift{\myshift{section}}
+
+\def\mynumber#1{
+  \begin{tikzpicture}[baseline=(name.base),remember picture]
+    \node (name) {\color{white} #1};
+    \node at ([yshift=\shift]name.center) {\includegraphics[scale=3]{Num.eps}};
+    \node (name) {\color{white} #1};
+  \end{tikzpicture}
+}
+
+
+% 章节样式设置
+% **********************************************
+\usepackage[explicit,indentafter,pagestyles]{titlesec}
+\titleformat{\chapter}
+   {\Huge\bfseries}
+   { }
+   {0em}{\begin{tikzpicture}[remember picture,overlay]
+   	\fill[cor2](current page.north west)--++(-1.5cm,-3cm)[rounded corners=2cm]--([xshift=-1.5cm,yshift=-3cm]current page.north east)[rounded corners=0cm]--++(1.5cm,3cm)--cycle;
+   	\node[fill=cor1,draw=colFrame,right,text=white,,inner ysep=15pt,inner xsep=20pt]at([shift={(1.5cm,-1.5cm)}]current page.north west){\fontsize{70pt}{50pt}\selectfont\sf\thechapter};
+   	\node[inner sep=1mm,color=white,font=\bfseries\huge,anchor= west]at([shift={(5cm,-1.5cm)}]current page.north west){\quad #1};
+   	\end{tikzpicture}
+   }
+   []
+   	
+   	\titleformat{name=\chapter,numberless}
+   	{\Huge\bfseries}
+   	{}
+   	{0em}{
+   		\begin{tikzpicture}[remember picture,overlay]
+   		\draw[line width=1.2pt,cor2]([yshift=-3cm]current page.north east)--++(-6cm,0);
+   		\node at([shift={(-5cm,-2.5cm)}]current page.north east){#1};
+   		\node at([shift={(-3.5cm,-3.5cm)}]current page.north east){\bfseries Contents};
+   		\end{tikzpicture}
+   	}[]
+   	\titlespacing*{\chapter}{0em}{0em}{3em}
+
+
+\usepackage{fancyhdr}
+\usetikzlibrary{fadings}
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyfoot[RO]{\tikz
+    {\node[draw,rounded corners,inner xsep=1em,scope fading = west,fill=cor1] {\thepage};
+    \node[rounded corners,inner xsep=1em] {\thepage};
+    }}
+
+\fancyfoot[LE]{\tikz
+    {\node[draw,rounded corners,inner xsep=1em,scope fading = east,fill=cor1] {\thepage};
+    \node[rounded corners,inner xsep=1em] {\thepage};
+    }}
+\fancyhead[RO]{\leftmark}
+\fancyhead[LE]{\rightmark}
+\fancyhead[RE,LO]{\href{http://www.latexstudio.net}{微信公众号：LaTeX 工作室}}
+\renewcommand\sectionmark[1]{%
+\markright{\CTEXifname{\CTEXthesection、}{}#1}}
+
+% 常用数学环境
+% *************************************************************
+% 性质
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\newcounter{prop}
+\counterwithin{prop}{chapter}
+\renewcommand\theprop{\arabic{prop}}
+\newcommand{\propname}{性质}
+\newenvironment{prop}{\par%
+  \refstepcounter{prop}%
+  \textbf{\propname\theprop}\label{prop\thechapter-\theprop}\quad
+}{\par}
+
+% 数学定理
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\newcounter{thm}
+\counterwithin{thm}{chapter}
+\renewcommand\thethm{\arabic{thm}}
+\newcommand{\thmname}{定理}
+\newenvironment{thm}{\par%
+  \refstepcounter{thm}%
+  \textbf{\thmname\thethm}\label{thm\thechapter-\thethm}\quad
+}{\par}
+
+% 习题样式设置
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\newcounter{example}
+\counterwithin{example}{chapter}
+\renewcommand\theexample{\thechapter.\arabic{example}}
+
+\newcommand{\examplename}{例}
+\newenvironment{example}{\par
+  \refstepcounter{example}
+  \Circled{\textbf{\examplename\theexample}\label{ex\thechapter-\arabic{example}}}
+}{\par}
+
+% 习题解答样式设置
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\newcounter{method}
+\counterwithin{method}{example}
+\renewcommand\themethod{方法\chinese{method}}
+\def\method{\par\refstepcounter{method}\textbf{\themethod}
+    \label{ex\thechapter-\arabic{example}-\arabic{method}}\quad}
+
+
+
+\usepackage{manfnt}
+\newenvironment{note}{\parskip=0.5ex\par\noindent\begin{tcolorbox}[sharp corners,boxrule=0.4pt,colframe=cor1,left=0.65cm,breakable,enhanced]
+     【\textbf{注}】}
+     {\end{tcolorbox}\par}
+
+\newenvironment{solution}
+               {\textcolor{cyan}{【\textbf{解}】}}
+               {\par}
+\newenvironment{proof}
+               {\textcolor{cyan}{【\textbf{证}】}}
+               {\par}
+\newenvironment{analysis}
+               {\textcolor{cyan}{【\textbf{分析}】}}
+               {\par}
+
+% 习题等设置
+% **********************************************
+\newcounter{xiti}
+\counterwithin{xiti}{chapter}
+\renewcommand\thexiti{\thechapter.\arabic{xiti}}
+
+\newenvironment{xiti}{\par
+  \refstepcounter{xiti}
+  \Circled{\hyperlink{ans\thechapter-\arabic{xiti}}{\textbf{\thexiti}}}
+  \hypertarget{xiti\thechapter-\arabic{xiti}}{}
+}{\par}
+
+\newcounter{ans}
+\counterwithin{ans}{chapter}
+\renewcommand\theans{\thechapter.\arabic{ans}}
+
+\newenvironment{ans}{\par
+  \refstepcounter{ans}
+  \Circled{\hyperlink{xiti\thechapter-\arabic{ans}}{\textbf{\theans}}}
+  \hypertarget{ans\thechapter-\arabic{ans}}{}
+}{\par}
+\newcounter{amethod}
+\counterwithin{amethod}{ans}
+\renewcommand\theamethod{方法\chinese{amethod}}
+\def\amethod{\refstepcounter{amethod}\textbf{\theamethod}
+    \label{ex\thechapter-\arabic{ans}-\arabic{amethod}}\quad}
+
+
+\usepackage[inline]{enumitem}
+\setlist{nosep}
+
+\usepackage{mathtools}
+
+\newtagform{circle}{}{}
+\usetagform{circle}
+\renewcommand\theequation{\circled{\arabic{equation}}}
+\DeclareMathOperator\tr{tr}
+
+% 英文分号和冒号转化为中文分号 
+% **************************************************************
+\catcode`\;=13
+\newcommand{;}{\text{；}}
+\catcode`\:=13
+\newcommand{:}{\text{：}}
+
+\usepackage{tcolorbox}
+\usepackage{varwidth}
+
+
+% 颜色设置 
+% **************************************************************
+\definecolor{colFrame}{RGB}{92,45,145}
+\definecolor{Titlebline}{RGB}{0,178,172}
+\definecolor{Fillcolor}{RGB}{90,103,111}
+\definecolor{cor1}{RGB}{0,165,157} 
+\definecolor{cor2}{RGB}{73,85,93}
+\definecolor{cor1a}{RGB}{0,165,157}
+\definecolor{cor2a}{RGB}{73,85,93}
+\definecolor{cor1b}{RGB}{251,181,0}
+\definecolor{cor2b}{RGB}{73,85,93}
+
+\definecolor{base1}{RGB}{184,202,213}
+\definecolor{base2}{RGB}{221,223,80}
+
+\definecolor{session1}{RGB}{0,94,176} 
+\definecolor{session2}{RGB}{75,173,49} 
+\definecolor{session3}{RGB}{183,13,40} 
+\definecolor{session4}{RGB}{236,107,16} 
+
+\definecolor{penaqua}{RGB}{0,165,157}
+\definecolor{grafite}{RGB}{73,85,93}
+\definecolor{penazul}{RGB}{0,94,176}
+\definecolor{penverde}{RGB}{75,173,49}
+\definecolor{penvinho}{RGB}{83,13,40}
+\definecolor{penlaranja}{RGB}{236,107,16}
+\definecolor{penbox2}{RGB}{240,238,201}
+
+\definecolor{box1}{RGB}{71,30,129}
+\definecolor{box2}{RGB}{225,221,146}
+\definecolor{box3}{RGB}{108,27,98}
+\definecolor{linkscolor}{RGB}{6,69,173}
+
+\definecolor{magblue}{RGB}{151,255,249}
+
+\definecolor{primario}{RGB}{0,165,157} 
+\definecolor{secundario}{RGB}{73,85,93} 
+\definecolor{terciario}{RGB}{184,202,213} 
+\definecolor{destacado}{RGB}{183,13,40} 
+\definecolor{atento}{RGB}{0,94,176} 
+
+% 定义我的第一个 tcolorbox--Mybox 做章节生成目录用的
+% **************************************************************
+\newtcolorbox{Mybox}[2][]{skin=enhancedlast jigsaw,interior hidden,
+boxsep=0pt,top=0pt,colframe=colFrame,colback=cyan,coltitle=cor2,
+fonttitle=\Huge\bfseries\sffamily,
+attach boxed title to top center,
+boxed title style={empty,boxrule=0.5mm},
+varwidth boxed title=0.5\linewidth,
+underlay boxed title={
+\draw[cor2,line width=0.5mm]
+([xshift=0.3mm-\tcboxedtitleheight*2,yshift=0.3mm]title.north west)
+--([xshift=-0.3mm+\tcboxedtitleheight*2,yshift=0.3mm]title.north east);
+\path[draw=white,top color=cor2!60,bottom color=white,line width=1mm,rotate=0]
+([xshift=0.25mm-\tcboxedtitleheight*2,yshift=0.25mm]title.north west)
+cos +(\tcboxedtitleheight,-\tcboxedtitleheight/2)
+sin +(\tcboxedtitleheight,-\tcboxedtitleheight/2)
+-- ([xshift=0.25mm,yshift=0.25mm]title.south west)
+-- ([yshift=0.25mm]title.south east)
+cos +(\tcboxedtitleheight,\tcboxedtitleheight/2)
+sin +(\tcboxedtitleheight,\tcboxedtitleheight/2); },
+title={#2},#1}
+
+% 设置知识拓展 tcolorbox--Knowledge 
+% **************************************************************
+\newtcolorbox{knowledge}{parbox=false, blanker, enhanced, breakable, before skip = 5mm, after skip = 5mm, left=3mm, right=3mm, top=6mm, bottom=3mm, colback=white, colframe=colFrame, toprule=1pt, bottomrule=1pt, rightrule=1pt, leftrule=1pt, outer arc = 3mm, arc = 3mm, sharp corners = northwest,
+fonttitle=\normalsize\bfseries,
+title= 知识拓展,
+boxed title style={empty, colback =colFrame, colframe = cyan, sharp corners},
+attach boxed title to top left={xshift=-2.3mm , yshift=-5.5mm},
+underlay boxed title={
+\filldraw [fill=colFrame, draw=cyan] ($(frame.north west) + (.4mm,0mm)$) rectangle ++(24.00mm,-5.00mm);% the rectangle where the title fits.
+\coordinate (A) at ($(frame.north west) + (24.00mm,-2.5mm)$);
+\node at (A) {\includegraphics[scale=0.8]{knowledge}};
+}
+}
+
+% 定义和设置：分析与思考的tcolorbox--evaluation
+% **************************************************************
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfdeclarelayer{top}
+\pgfdeclarelayer{bottom}
+\pgfsetlayers{bottom,background,main,foreground,top}
+\NewEnviron{evaluation}{%
+	\begin{tikzpicture}[baseline=(Name.base),remember picture]
+		\begin{pgfonlayer}{main}
+			\node  (Name) {%
+			\begin{minipage}{0.90\textwidth}
+				\BODY			
+			\end{minipage}	
+			};
+		\end{pgfonlayer}
+		\begin{pgfonlayer}{main}
+			\filldraw [fill=white, draw=white] (Name.north west) arc [start angle=270, end angle=180, x radius=0.00mm, y radius=0.00mm] -- ++(0.00mm,7.00mm) arc [start angle=180, end angle=90, x radius=0.00mm, y radius=2mm] -- ++(0.00mm,0.00mm) coordinate (a) -- cycle;
+
+
+			\node [draw=cor2, fill=cor2, minimum height=6.00mm, right] (heading) at ($(a) + (0.00mm,-5.00mm)$) {\color{white}\bfseries 分析与思考};
+			\filldraw [fill=cor1a, draw=cor1] (heading.north east) -- ++(6.1mm,-6.1mm) coordinate (b) -| cycle;
+		\end{pgfonlayer}
+		
+		\begin{pgfonlayer}{background}
+			\draw [draw=yellow!30!red, line width=0.5mm, overlay] ($(Name.north west) + (27.00mm,1mm)$) -| ($(Name.south east) + (1.50mm,-1.50mm)$) -- ($(Name.south west) + (-1.50mm,-1.50mm)$);
+		\end{pgfonlayer}	
+	\end{tikzpicture}
+}
+
+% 定义学习内容总结的 tcolorbox--oppenningbox 
+% **************************************************************
+\newtcolorbox{openningbox}{
+  enhanced,
+  opacityframe=.3,
+  opacityfill=.3,
+  width=170mm,
+  left=3mm,
+  right=3mm,
+  top=3mm,
+  bottom=.5mm,
+  colback=white,
+  colframe=white,
+  arc=3mm,
+  sharp corners=uphill,
+    lower separated = false,
+    before upper = \tcbsubtitle{学习内容概要},
+    before lower = \tcbsubtitle{学习小笔记},
+    fontupper =\rmfamily,
+    fontlower = \sffamily,
+    sharp corners = north,
+    subtitle style = {
+      frame empty,
+      fontupper =\CJKfontspec{华文行楷}\fontsize{11pt}{0},
+      colback = yellow!40!red,
+      coltext = white,
+      width = 3.5cm,
+      arc = 8pt,
+      rounded corners = east
+    }
+  }
+
+% 设置边上的注释 
+% **************************************************************
+\newenvironment{objectives}[4]
+{\ifnum #3=1
+{\ifnum #4=1
+
+\marginpar{\vspace{.05em}\begin{tcolorbox}[blanker, enhanced, enforce breakable, before skip = 5mm, after skip = 5mm, colframe=red, left=3mm, top=6mm,segmentation style={draw=none,fill=none}, bottom=3mm, colback=white, %colframe=box1,
+borderline east={2mm}{0pt}{white}, toprule=1pt, bottomrule=1pt, leftrule=1pt, rightrule=-1pt, outer arc = 3mm, arc = 3mm,
+fonttitle=\bfseries\large,  % Should be 12 pt. Don't know how to set this.
+title= 重要注释,
+boxed title style={empty,arc=0pt,outer arc=0pt,boxrule=0pt},
+attach boxed title to top right={yshift=.5mm-.8pt},
+underlay boxed title={
+\draw[line width=3pt,white] ($(frame.north east)+(0,-1pt)$)--($(frame.north east)+(-15pt,-1pt)$);
+\filldraw [cor1] ($(title.north west) + (0 mm,-3.50mm)$) -- ++(0.00mm,2.5mm) arc [start angle=180, end angle=90, y radius=2.00mm, x radius=2.00mm] -| ($(title.north east)+(0,-5mm)$) arc [start angle=0, end angle=-90, x radius=2.00mm, y radius=2.00mm] -| cycle;
+},
+before upper={\setlength{\parskip}{6pt}\vspace{-15pt}\tcbsubtitle{#1}
+\normalfont\setlist[enumerate]{label=OE\arabic*,wide}\setlist[itemize,1]{wide, label=\textcolor{cor1}{\small$\blacksquare$}, topsep=2.5pt, itemsep=0pt}},
+    subtitle style = {
+      frame empty,
+      fontupper = \bfseries\large,
+      colback = white,
+      coltext = cor1,
+      arc = 8pt,
+      top=0pt,
+      bottom=0pt
+    },
+    middle=5pt,
+    break at=-\baselineskip/0pt] #2 \end{tcolorbox}}
+
+
+\else
+
+\marginpar{\vspace{.05em}\begin{tcolorbox}[blanker, enhanced, enforce breakable, before skip = 5mm, after skip = 5mm, colframe=cor2, right=3mm, top=6mm,segmentation style={draw=none,fill=none}, bottom=3mm, colback=white, %colframe=box1,
+borderline west={2mm}{0pt}{white}, toprule=1pt, bottomrule=1pt, rightrule=1pt, leftrule=-1pt, outer arc = 3mm, arc = 3mm,
+fonttitle=\bfseries\large,  % Should be 12 pt. Don't know how to set this.
+title= Objetivos Específicos,
+boxed title style={empty,arc=0pt,outer arc=0pt,boxrule=0pt},
+attach boxed title to top left={yshift=.5mm-.8pt},
+underlay boxed title={
+\draw[line width=3pt,white] ($(current page.north west)+(0,-1pt)$)--($(current page.north west)+(15pt,-1pt)$);
+\filldraw [cor2] ($(title.north west) + (0 mm,-3.50mm)$) -- ++(0.00mm,2.5mm) arc [start angle=180, end angle=90, y radius=2.00mm, x radius=2.00mm] -| ($(title.north east)+(0,-5mm)$) arc [start angle=0, end angle=-90, x radius=2.00mm, y radius=2.00mm] -| cycle;
+},
+before upper={\setlength{\parskip}{6pt}\vspace{-15pt}\tcbsubtitle{#1}
+\normalfont\setlist[enumerate]{label=OE\arabic*,wide}\setlist[itemize,1]{wide, label=\textcolor{cor2}{\small$\blacksquare$}, topsep=2.5pt, itemsep=0pt}},
+    subtitle style = {
+      frame empty,
+      fontupper = \bfseries\large,
+      colback = white,
+      coltext = cor2,
+      arc = 8pt,
+      top=0pt,
+      bottom=0pt
+    },
+    middle=5pt,
+    break at=-\baselineskip/0pt] #2 \end{tcolorbox}}
+
+\fi}
+
+
+\else
+
+{\ifnum #4=9
+
+\marginpar{\notebox{\textcolor{white}{\textbf{\endnotemark}}}}
+
+
+
+\endnotetext{\vspace{-1.75\baselineskip}
+\begin{tcolorbox}[blanker, breakable, enhanced, before skip = 5mm, after skip = 5mm, colframe=red,left=3mm, right=3mm, top=6mm,segmentation style={draw=none,fill=none}, bottom=3mm, colback=white, %colframe=box1,
+borderline west={3mm}{0pt}{white}, toprule=1pt, bottomrule=1pt, rightrule=1pt, leftrule=-1pt, outer arc = 3mm, arc = 3mm,
+fonttitle=\bfseries\large,  % Should be 12 pt. Don't know how to set this.
+title= Objetivos Específicos,
+boxed title style={empty,arc=0pt,outer arc=0pt,boxrule=0pt},
+attach boxed title to top left={xshift=3mm , yshift=.5mm-.8pt},
+underlay boxed title={
+\draw[line width=3pt,white] ($(current page.north west)+(0,-1pt)$)--($(current page.north west)+(15pt,-1pt)$);
+\filldraw [red] ($(title.north west) + (0 mm,-3.50mm)$) -- ++(0.00mm,2.5mm) arc [start angle=180, end angle=90, y radius=2.00mm, x radius=2.00mm] -| ($(title.north east)+(0,-5mm)$) arc [start angle=0, end angle=-90, x radius=2.00mm, y radius=2.00mm] -| cycle;
+},
+before upper={\setlength{\parskip}{6pt}\vspace{-15pt}\tcbsubtitle{#1}
+\normalfont\setlist[enumerate]{label=OE\arabic*,wide}\setlist[itemize,1]{wide, label=\textcolor{red}{\small$\blacksquare$}, , topsep=2.5pt, itemsep=0pt}},
+% {\boxtitlefont\setlist[enumerate]{label=OE\arabic*,wide}\setlist[itemize,1]{wide, label=\textcolor{penaqua}{\small$\blacksquare$}}
+% {\vspace{1em}\large\textbf{Levar o aluno a}}\normalsize},
+    subtitle style = {
+      frame empty,
+      fontupper = \bfseries\large,
+      colback = white,
+      coltext = red,
+      arc = 8pt,
+      top=0pt,
+      bottom=0pt
+    },
+    middle=5pt,
+    break at=-\baselineskip/0pt] #2 \end{tcolorbox}
+
+}
+
+\else
+
+\marginpar{\notebox{\textcolor{white}{\textbf{\endnotemark}}}}
+
+
+\endnotetext{\adjustbox{valign=t}
+{\begin{tcolorbox}[blanker, breakable, enhanced, before skip = 5mm, after skip = 5mm, colframe=red,left=3mm, right=3mm, top=6mm,segmentation style={draw=none,fill=none}, bottom=3mm, colback=white, %colframe=box1,
+borderline west={3mm}{0pt}{white}, toprule=1pt, bottomrule=1pt, rightrule=1pt, leftrule=-1pt, outer arc = 3mm, arc = 3mm,
+fonttitle=\bfseries\large,  % Should be 12 pt. Don't know how to set this.
+title= Objetivos Específicos,
+boxed title style={empty,arc=0pt,outer arc=0pt,boxrule=0pt},
+attach boxed title to top left={xshift=3mm , yshift=.5mm-.8pt},
+underlay boxed title={
+\draw[line width=3pt,white] ($(frame.north west)+(0,-1pt)$)--($(frame.north west)+(15pt,-1pt)$);
+\filldraw [red] ($(title.north west) + (0 mm,-3.50mm)$) -- ++(0.00mm,2.5mm) arc [start angle=180, end angle=90, y radius=2.00mm, x radius=2.00mm] -| ($(title.north east)+(0,-5mm)$) arc [start angle=0, end angle=-90, x radius=2.00mm, y radius=2.00mm] -| cycle;
+},
+before upper={\setlength{\parskip}{6pt}\vspace{-15pt}\tcbsubtitle{#1}
+\normalfont\setlist[enumerate]{label=OE\arabic*,wide}\setlist[itemize,1]{wide, label=\textcolor{red}{\small$\blacksquare$}, , topsep=2.5pt, itemsep=0pt}},
+    subtitle style = {
+      frame empty,
+      fontupper = \bfseries\large,
+      colback = white,
+      coltext = red,
+      arc = 8pt,
+      top=0pt,
+      bottom=0pt
+    },
+    middle=5pt,
+    break at=-\baselineskip/0pt] #2 \end{tcolorbox}}
+
+}
+\fi}
+\fi}
+{}
+
+
+% 英文分号和冒号转化为中文分号 
+% **************************************************************
+\newtcolorbox{reflection}{parbox=false, blanker, enhanced, breakable, before skip = 5mm, after skip = 5mm, left=3mm, right=3mm, top=7mm, bottom=3mm, colback=white, colframe=box1, borderline west={3mm}{0pt}{white}, toprule=1pt, bottomrule=1pt, rightrule=1pt, leftrule=-1pt, outer arc = 3mm, arc = 3mm,
+fonttitle=\bfseries\large, 
+title=知识内容,
+boxed title style={empty,arc=0pt,outer arc=0pt,boxrule=0pt},
+attach boxed title to top left={xshift=3mm , yshift=-2.5mm},
+underlay boxed title={
+\filldraw [draw=box1, fill=box1] ($(title.north west) + (0 mm,-2.50mm)$) -- ++(0.00mm,1.50mm) arc [start angle=180, end angle=90, y radius=2.00mm, x radius=2.00mm] -| ++(34.00mm,-5.00mm) arc [start angle=0, end angle=-90, x radius=2.00mm, y radius=2.00mm] -| cycle;}
+}
+
+
+\newtcolorbox[auto counter, number within=chapter, number freestyle={\noexpand\arabic{\tcbcounter}}]{Example}[1]{parbox=false, blanker, enhanced, breakable, before skip = 5mm, after skip = 5mm, left=3mm, right=3mm, top=10mm, bottom=3mm, colback=white, colframe=cor1, width=162mm, toprule=1pt, bottomrule=1pt, rightrule=1pt, leftrule=1pt, outer arc = 8mm, arc = 8mm, sharp corners = northwest, sharp corners = southeast, sharp corners = southwest,
+title={
+\textcolor{yellow!20!red}{\bfseries\large #1}
+},
+boxed title style={empty, sharp corners},
+attach boxed title to top left={xshift=22mm , yshift=-7.5mm},
+underlay boxed title ={
+% Draw the title underlay rectangle
+\def\temp{#1}\ifx\temp\empty
+%
+\else
+\fill[cor2] ($(frame.north west)+(0,-1pt)$) rectangle ($(title.south east)+(3mm,0mm)$) coordinate (R);
+\fi
+
+\fill[cor1] (frame.north west) -- ($(frame.north west)+(0,-1.4pt)+(0,-7mm)$) -- ++ (22mm,0mm) arc [start angle=-90, end angle=0, x radius = 2mm, y radius = 2mm] -- ($(frame.north west) + (24mm,0)$) --  cycle;
+\node [white] at ($(frame.north west) + (12mm,-3.5mm)$) {\bfseries 知识探索 \thetcbcounter};
+
+},
+before upper={\def\currentcolor{cor1}}
+}
+
+% observation 盒子的定义
+% **************************************************************
+\newtcolorbox{observation}[1]{parbox=false, enhanced, breakable, left=3mm, right=3mm, top=3mm, bottom=2mm, colback=box2!50, colframe=box2!50, arc=3mm, sharp corners=uphill, pad at break=2mm, drop fuzzy shadow, title={\bfseries\textcolor{cor1}{#1}}, attach boxed title to top center={xshift=0mm, yshift=-5.5mm}, boxed title style ={empty}}
+
+% 习题与练习的 tcolorbox
+% **************************************************************
+\newtcolorbox[auto counter, number within=chapter, number freestyle={\noexpand\arabic{\tcbcounter}}]{task}[1]{parbox=false, blanker, enhanced, breakable, before skip = 8mm, after skip = 5mm, left=0.3mm, right=0.8mm, top=5mm, bottom=3mm, colback=white, colframe=cor2!70, width=162mm,
+  toprule=0pt,
+  bottomrule=0.5pt,
+  rightrule=-1pt,
+  leftrule=-1pt,
+  outer arc = 3mm,
+  arc = 3mm,
+  sharp corners = northeast,
+  sharp corners = southeast,
+  sharp corners = southwest,
+  fontupper=\fontsize{11}{15.5}, 
+fonttitle=\bfseries\large,  
+coltitle=cor1,
+title={#1\hfill},
+boxed title style={empty,arc=1pt,outer arc=1pt,boxrule=1pt},
+attach boxed title to top left={xshift=-1 mm , yshift=-0.1mm},
+underlay boxed title ={
+\draw[cor2!70, line width = 1pt] ($(title.south west)+(3mm,0mm)$) coordinate (LU) arc [start angle=90, end angle=180, y radius=2mm, x radius=2mm] --++ (0mm , -2mm);
+
+\draw[cor2!70,  line width=1pt] (LU) -- ++ (158mm,0mm) coordinate (R);
+\fill [cor2!70] ($(R)+(0mm,-.3mm)$) -- ++ (-25.00mm,0mm) coordinate (D) --++ (0mm, 5mm) arc [start angle=180, end angle=90, x radius=2.00mm, y radius=2.00mm] -- ++ (25.00mm,0mm) coordinate (B) --++ (0.00mm,-5mm)  arc [start angle=0, end angle=-90, y radius=2.00mm, x radius=2.00mm] -- cycle;
+\node[font=\rmfamily\large,white] at ($(B)!0.5!(D)$) {想一想 \thetcbcounter};
+}
+}

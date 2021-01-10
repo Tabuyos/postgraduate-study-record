@@ -60,7 +60,8 @@
 
 % 字体设置
 % **********************************************
-\setCJKmainfont[BoldFont={方正黑体_GBK},ItalicFont={方正楷体_GBK},Mapping=fullwidth-stop]{方正书宋_GBK}
+% \setCJKmainfont[BoldFont={方正黑体_GBK},ItalicFont={方正楷体_GBK},Mapping=fullwidth-stop]{方正书宋_GBK}
+\setCJKmainfont{Noto Sans CJK SC}
 
 \defaultfontfeatures{Mapping=tex-text}
 \XeTeXlinebreaklocale ”zh”
@@ -69,7 +70,7 @@
 %-----------------------------------------------
 
 \usepackage[perpage]{footmisc}
-\usepackage[colorlinks=true,linkcolor=blue!75!green,linktoc=all,pdfauthor={向禹}]{hyperref}
+\usepackage[colorlinks=true,linkcolor=blue!75!green,linktoc=all,pdfauthor={Tabuyos(Aaron Liew)}]{hyperref}
 
 
 % 定义一些常用数学字母
@@ -173,7 +174,7 @@
    	\end{tikzpicture}
    }
    []
-   	
+
    	\titleformat{name=\chapter,numberless}
    	{\Huge\bfseries}
    	{}
@@ -203,7 +204,7 @@
     }}
 \fancyhead[RO]{\leftmark}
 \fancyhead[LE]{\rightmark}
-\fancyhead[RE,LO]{\href{http://www.latexstudio.net}{微信公众号：LaTeX 工作室}}
+\fancyhead[RE,LO]{\href{http://www.tabuyos.com}{\color{gray}{微信公众号: Tabuyos}}}
 \renewcommand\sectionmark[1]{%
 \markright{\CTEXifname{\CTEXthesection、}{}#1}}
 
@@ -306,7 +307,7 @@
 \renewcommand\theequation{\circled{\arabic{equation}}}
 \DeclareMathOperator\tr{tr}
 
-% 英文分号和冒号转化为中文分号 
+% 英文分号和冒号转化为中文分号
 % **************************************************************
 \catcode`\;=13
 \newcommand{;}{\text{；}}
@@ -317,12 +318,12 @@
 \usepackage{varwidth}
 
 
-% 颜色设置 
+% 颜色设置
 % **************************************************************
 \definecolor{colFrame}{RGB}{92,45,145}
 \definecolor{Titlebline}{RGB}{0,178,172}
 \definecolor{Fillcolor}{RGB}{90,103,111}
-\definecolor{cor1}{RGB}{0,165,157} 
+\definecolor{cor1}{RGB}{0,165,157}
 \definecolor{cor2}{RGB}{73,85,93}
 \definecolor{cor1a}{RGB}{0,165,157}
 \definecolor{cor2a}{RGB}{73,85,93}
@@ -332,10 +333,10 @@
 \definecolor{base1}{RGB}{184,202,213}
 \definecolor{base2}{RGB}{221,223,80}
 
-\definecolor{session1}{RGB}{0,94,176} 
-\definecolor{session2}{RGB}{75,173,49} 
-\definecolor{session3}{RGB}{183,13,40} 
-\definecolor{session4}{RGB}{236,107,16} 
+\definecolor{session1}{RGB}{0,94,176}
+\definecolor{session2}{RGB}{75,173,49}
+\definecolor{session3}{RGB}{183,13,40}
+\definecolor{session4}{RGB}{236,107,16}
 
 \definecolor{penaqua}{RGB}{0,165,157}
 \definecolor{grafite}{RGB}{73,85,93}
@@ -352,11 +353,11 @@
 
 \definecolor{magblue}{RGB}{151,255,249}
 
-\definecolor{primario}{RGB}{0,165,157} 
-\definecolor{secundario}{RGB}{73,85,93} 
-\definecolor{terciario}{RGB}{184,202,213} 
-\definecolor{destacado}{RGB}{183,13,40} 
-\definecolor{atento}{RGB}{0,94,176} 
+\definecolor{primario}{RGB}{0,165,157}
+\definecolor{secundario}{RGB}{73,85,93}
+\definecolor{terciario}{RGB}{184,202,213}
+\definecolor{destacado}{RGB}{183,13,40}
+\definecolor{atento}{RGB}{0,94,176}
 
 % 定义我的第一个 tcolorbox--Mybox 做章节生成目录用的
 % **************************************************************
@@ -380,7 +381,7 @@ cos +(\tcboxedtitleheight,\tcboxedtitleheight/2)
 sin +(\tcboxedtitleheight,\tcboxedtitleheight/2); },
 title={#2},#1}
 
-% 设置知识拓展 tcolorbox--Knowledge 
+% 设置知识拓展 tcolorbox--Knowledge
 % **************************************************************
 \newtcolorbox{knowledge}{parbox=false, blanker, enhanced, breakable, before skip = 5mm, after skip = 5mm, left=3mm, right=3mm, top=6mm, bottom=3mm, colback=white, colframe=colFrame, toprule=1pt, bottomrule=1pt, rightrule=1pt, leftrule=1pt, outer arc = 3mm, arc = 3mm, sharp corners = northwest,
 fonttitle=\normalsize\bfseries,
@@ -406,8 +407,8 @@ underlay boxed title={
 		\begin{pgfonlayer}{main}
 			\node  (Name) {%
 			\begin{minipage}{0.90\textwidth}
-				\BODY			
-			\end{minipage}	
+				\BODY
+			\end{minipage}
 			};
 		\end{pgfonlayer}
 		\begin{pgfonlayer}{main}
@@ -417,14 +418,14 @@ underlay boxed title={
 			\node [draw=cor2, fill=cor2, minimum height=6.00mm, right] (heading) at ($(a) + (0.00mm,-5.00mm)$) {\color{white}\bfseries 分析与思考};
 			\filldraw [fill=cor1a, draw=cor1] (heading.north east) -- ++(6.1mm,-6.1mm) coordinate (b) -| cycle;
 		\end{pgfonlayer}
-		
+
 		\begin{pgfonlayer}{background}
 			\draw [draw=yellow!30!red, line width=0.5mm, overlay] ($(Name.north west) + (27.00mm,1mm)$) -| ($(Name.south east) + (1.50mm,-1.50mm)$) -- ($(Name.south west) + (-1.50mm,-1.50mm)$);
-		\end{pgfonlayer}	
+		\end{pgfonlayer}
 	\end{tikzpicture}
 }
 
-% 定义学习内容总结的 tcolorbox--oppenningbox 
+% 定义学习内容总结的 tcolorbox--oppenningbox
 % **************************************************************
 \newtcolorbox{openningbox}{
   enhanced,
@@ -447,7 +448,7 @@ underlay boxed title={
     sharp corners = north,
     subtitle style = {
       frame empty,
-      fontupper =\CJKfontspec{华文行楷}\fontsize{11pt}{0},
+      fontupper =\CJKfontspec{Noto Sans Kaithi}\fontsize{11pt}{0},
       colback = yellow!40!red,
       coltext = white,
       width = 3.5cm,

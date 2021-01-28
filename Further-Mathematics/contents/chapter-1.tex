@@ -1,61 +1,193 @@
-\chapter{函数与极限}
+\setcounter{chapter}{0}
+\chapter{函数与极限\label{chap1}}
 \section{映射与函数}
-\label{sec:ch-1-sec-1}
-1. 求下列函数的自然定义域:
-\begin{align*}
-  \tag 1
-  y = \frac{1}{ 1-x^2},\ \mathbb{D}(x)\ne\pm 1
-\end{align*}
+\subsection{习题1-1}
+\begin{task}{}
+  1. 求下列函数的自然定义域:
+  \begin{multicols}{2}
+    \begin{enumerate}
+    \item {}
+      $y=\sqrt{3x+2}\\\sol\MD(x)\in[-\frac{2}{3},+\infty)$
+    \item {}
+      $y=\frac{1}{1-x^2}\\\sol\MD(x)\ne\pm 1$
+    \item {}
+      $y=\frac{1}{x}-\sqrt{1-x^2}\\\sol\MD(x)\ne\pm 1,0$
+    \item {}
+      $y=\frac{1}{\sqrt{4-x^2}}\\\sol\MD(x)\in(-2,2)$
+    \item {}
+      $y=\sin{\sqrt{x}}\\\sol\MD(x)\in[0,+\infty)$
+    \item {}
+      $y=\tan{(x+1)}\\\sol\MD(x)\ne k\pi+\frac{\pi}{2},k\in\MZ$
+    \item {}
+      $y=\arcsin{(x-3)}\\\sol\MD(x)\in[2,4]$
+    \item {}
+      $y=\sqrt{3-x}+\arctan\frac{1}{3}\\\sol\MD(x)\in(-\infty,3]\ \mbox{且}\ x\neq0$
+    \item {}
+      $y=\ln{(x+1)}\\\sol\MD(x)\in(-1,+\infty)$
+    \item {}
+      $y=\ee^{\frac{1}{x}}\\\sol\MD(x)\neq0$
+    \end{enumerate}
+  \end{multicols}
+  % \hr
+  \noindent 2. 下列各题中, 函数f(x)和g(x)是否相同?为什么?
+  \begin{enumerate}
+    \renewcommand{\labelenumi}{(\theenumi)}
+  \item
+    $f(x)=\lg{x^2},g(x)=2\lg{x}$
+  \item
+    $f(x)=x,g(x)=\sqrt{x^2}$
+  \item
+    $f(x)=\sqrt[3]{x^{4}-x^{3}},g(x)=x\sqrt[3]{x-1}$
+  \item
+    $f(x)=1,g(x)=\sec^2{x}-\tan^2{x}$
+  \end{enumerate}
+  \noindent 3. 设
+  \begin{align*}
+    \varphi(x)=
+    \begin{cases}
+      \abs{\sin x},&\abs{x}<\frac{\pi}{3}\\
+      0,&\abs{x}\ge\frac{\pi}{3}
+    \end{cases}
+  \end{align*}
+  求$\varphi(\frac{\pi}{6}),\varphi(\frac{\pi}{4}),\varphi(-\frac{\pi}{4}),\varphi(-2)$,并作出函数$y=\varphi(x)$的图形.
 
-\begin{align*}
-  \tag 2
-  y = \sqrt{ 3x+2 },\ \mathbb{D}(x)\in[-\frac{2}{3},+\infty)
-\end{align*}
+  \noindent 4. 试证下列函数在指定区间内的单调性:
+  \begin{multicols}{2}
+    \begin{enumerate}
+    \item {}
+      $y=\frac{x}{1-x},\quad(-\infty, 1);$
+    \item {}
+      $y=x+\ln x,\quad(0, +\infty).$
+    \end{enumerate}
+  \end{multicols}
+  \noindent 5. 设$f(x)$为定义在$(-l, l)$内的奇函数,若$f(x)$在$(-l, l)$内单调增加,证明$f(x)$在$(-l, 0)$内也单调增加.
 
-\begin{align*}
-  \tag 3
-  y = \frac{1}{x}-\sqrt{1-x^2},\ \mathbb{D}(x)\ne\pm 1, 0
-\end{align*}
+  \noindent 6. 设下面所考虑的函数都是定义在区间$(-l, l)$上的,证明:
+  \begin{enumerate}
+    \renewcommand{\labelenumi}{(\theenumi)}
+  \item
+    两个偶函数的和是偶函数, 两个奇函数的和是奇函数;
+  \item
+    两个偶函数的乘积是偶函数, 两个奇函数的乘积是偶函数, 偶函数与奇函数的乘积是其函数.
+  \end{enumerate}
+  \noindent 7. 下列函数中哪些是偶函数, 哪些是奇函数, 哪些既非偶函数又非其函数?
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \renewcommand{\labelenumi}{(\theenumi)}
+    \item
+      $y=x^2(1-x^2)$
+    \item
+      $y=3x^2-x^3$
+    \item
+      $y=\frac{1-x^2}{1+x^2}$
+    \item
+      $y=x(x-1)(x+1)$
+    \item
+      $y=\sin x-\cos{(x+1)}$
+    \item
+      $y=\frac{a^{x}+a^{-x}}{2}$
+    \end{enumerate}
+  \end{multicols}
+  \noindent 8. 下列各函数中那些是周期函数? 对于周期函数, 指出其周期
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \renewcommand{\labelenumi}{(\theenumi)}
+    \item
+      $y=\cos{(x-2)}$
+    \item
+      $y=\cos{4x}$
+    \item
+      $y=1 + \sin\pi x$
+    \item
+      $y=x\cos x$
+    \item
+      $y=\sin^2 x$
+    \end{enumerate}
+  \end{multicols}
+  \noindent 9. 下列函数的反函数:
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \renewcommand{\labelenumi}{(\theenumi)}
+    \item
+      $y=\sqrt[3]{x + 1}$
+    \item
+      $y=\frac{1 - x}{1 + x}$
+    \item
+      $y=\frac{ax + b}{cx + d}\quad(ad - bc \neq 0)$
+    \item
+      $y=2\sin{3x}\quad(-\frac{\pi}{6}\leq x \leq \frac{\pi}{6})$
+    \item
+      $y=1 + \ln (x + 2)$
+    \item
+      $y=\frac{2^x}{2^x + 1}$
+    \end{enumerate}
+  \end{multicols}
+  \noindent 10. 设函数$f(x)$在数集$X$上有定义, 试证: 函数$f(x)$在$X$上有界的充分必要条件是在$X$上既有上界又有下界.
 
-\begin{align*}
-  \tag 4
-  y = \frac{1}{ \sqrt{ 4-x^2 } },\ \mathbb{D}(x)\ne\pm 1
-\end{align*}
+  \noindent 11. 在下列各题中, 求有所给函数构成的复合函数, 并求这函数分别对应于给定自变量值$x_1$和$x_2$的函数值:
+  \begin{enumerate}
+    \renewcommand{\labelenumi}{(\theenumi)}
+  \item
+    $y=u^2, u=\sin x,x_1=\frac{\pi}{6}, x_2=\frac{\pi}{4}$
+  \item
+    $y=\sin u, u=2x,x_1=\frac{\pi}{8}, x_2=\frac{\pi}{4}$
+  \item
+    $y=\sqrt{u}, u=1 + x^2, x_1=1, x_2=2$
+  \item
+    $y=\ee^u, u=x^2, x_1=0, x_2=1$
+  \item
+    $y=u^2, u=\ee^x, x_1=1, x_2=-1$
+  \end{enumerate}
+  \noindent 12. 设$f(x)$的定义域$\MD = [0,1]$, 求下列各函数的定义域:
+  \begin{enumerate}
+    \renewcommand{\labelenumi}{(\theenumi)}
+  \item
+    $f(x^2)$
+  \item
+    $f(\sin x)$
+  \item
+    $f(x + a)\quad (a > 0)$
+  \item
+    $f(x + a) + f(x - a)\quad (a > 0)$
+  \end{enumerate}
+  \noindent 13. 设
+  \begin{align*}
+    f(x)=
+    \begin{cases}
+      1,&\abs{x}<1,\\
+      0,&\abs{x}=1,\quad g(x)=e^x,\\
+      -1,&\abs{x}>1
+    \end{cases}
+  \end{align*}
+  求$f[g(x)]$和$g[f(x)]$,并作出这两个函数的图形.
+\end{task}
 
-\begin{align*}
-  \tag 5
-  y = \sin{\sqrt{x}},\ \mathbb{D}(x)\in[0,+\infty)
-\end{align*}
-
-\begin{align*}
-  \tag 6
-  y = \tan(x + 1),\ \mathbb{D}(x)\ne k\pi+\frac{\pi}{2}-1,k\in\mathbb{Z}
-\end{align*}
-
-\begin{align*}
-  \tag 7
-  y = \arcsin(x-3)
-\end{align*}
-
-\begin{align*}
-  \tag 8
-  y = \sqrt{ 3-x }+\arcsin{\frac{1}{x}}
-\end{align*}
-
-\begin{align*}
-  \tag 9
-  y = \ln{ x+1 }
-\end{align*}
-
-\begin{align*}
-  \tag {10}
-  y = e^{\frac{1}{x}}
-\end{align*}
-
-\begin{equation}
-  \label{}
-  \ne \neq k\pi
-\end{equation}
+\section{数列的极限}
+\subsection{习题1-2}
+\begin{task}{}
+  \noindent 1. 下列各题中, 哪些数列收敛, 哪些数列发散? 对收敛数列, 通过观察${x_n}$的变化趋势, 写出它们的极限:
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \renewcommand{\labelenumi}{(\theenumi)}
+    \item
+      $\{\frac{1}{2^n}\}$
+    \item
+      $\{(-1)^n\frac{1}{n}\}$
+    \item
+      $\{2+\frac{1}{n^2}\}$
+    \item
+      $\{\frac{n-1}{n+1}\}$
+    \item
+      $\{n(-1)^n\}$
+    \item
+      $\{\frac{2^n-1}{3^n}\}$
+    \item
+      $\{n-\frac{1}{n}\}$
+    \item
+      $\{[(-1)^n+1]\frac{n+1}{n}\}$
+    \end{enumerate}
+  \end{multicols}
+\end{task}
 
 
 %%% Local Variables:

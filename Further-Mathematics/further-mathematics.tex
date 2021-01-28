@@ -6,21 +6,48 @@
 \author{tabuyos\thanks{Aaron Liew}}
 \date{\today}
 
+\DeclareMathOperator{\ee}{\!\!\;\mathrm e}
+\newcommand{\MR}{\mathbb R}
+\newcommand{\MD}{\mathbb D}
+\newcommand{\MC}{\mathbb C}
+\newcommand{\MF}{\mathbb F}
+\newcommand{\MZ}{\mathbb Z}
+\newcommand{\MN}{\mathbb N}
+\newcommand{\MQ}{\mathbb Q}
+\newcommand{\MCF}{\mathscr F}
+% Z 整数集, N 自然数集, Q 有理数集, R 实数集
+\newcommand{\csol}[1]{\mbox{\color{gray}{\bfseries{#1: }}}}
+\newcommand{\sol}{\csol{解}}
+% \newcommand{\hr}{\vspace{-15pt}\newline{\color{lightgray}{\rule{\textwidth}{0.1pt}}}\par}
+\newcommand{\hr}{\noindent\vspace{5pt}{\color{lightgray}{\hrule}}\vspace{10pt}}
+\newcommand{\abs}[1]{\left|#1\right|}
+
 \begin{document}
+% \begin{titlepage}
+%   \definecolor{zy}{RGB}{78,81,125}
+%   \begin{tikzpicture}[remember picture,overlay]
+%     \node[opacity=0.4] at (2,-7){}
+%     \begin{scope}
+%       \node[text width=1em,anchor=north,Fillcolor,scale=4.5,align=center,font=\bfseries]
+%       at([shift={(-4,-1.5)}]current page.north east)
+%       {高\\[-2mm]等\\[-2mm]数\\[-2mm]学}
+%       \node[anchor=south west,text=Fillcolor,scale=3,align=center,font=\bfseries]
+%       at([shift={(2,1.7)}]current page.south west)
+%       {大\\[-2mm]学\\[-2mm]数\\[-2mm]学}
+%     \end{scope}
+%   \end{tikzpicture}
+% \end{titlepage}
 \maketitle
-Hello Tabuyos
-\newpage
-fdsa
-\newpage
-fdjsalfjdsjf jfdskla
+\thispagestyle{empty}
+\begin{Mybox}{Contents}
+  \makeatletter
+  \@starttoc{toc}
+  \makeatletter
+\end{Mybox}
 
-fjdsaklfjdsla
-\newpage
-fdjsaklfjdslak
+\cleardoublepage
 
-jj
-\newpage
-tabuyos
+\include{contents/chapter-1}
 \end{document}
 
 
